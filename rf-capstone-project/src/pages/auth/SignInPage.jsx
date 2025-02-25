@@ -2,11 +2,14 @@ import { Link, useLocation } from "react-router-dom";
 import AuthForm from "./AuthForm";
 import FormContainer from "./AuthForm/FormContainer";
 import * as userService from "services/user";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import SessionContext from "context/sessionContext";
 
 const SignInPage = () => {
   const [error, setError] = useState("");
   const location = useLocation();
+  const sessionContext = useContext(SessionContext);
+
   return (
     <FormContainer>
       <div className="text-red-700 font-lato">{error}</div>
@@ -26,11 +29,11 @@ const SignInPage = () => {
             username: values.username,
             password: values.password,
           });
+          const data = await response.json();
           if (response.status == 201) {
-            console.log("sign in successful!");
+            sessionContext.signIn(data.capstone_session_token);
             setError("");
           } else {
-            const data = await response.json();
             setError(data.error);
           }
         }}
