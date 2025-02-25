@@ -5,18 +5,20 @@ import SignUpPage from "./pages/auth/SignUpPage";
 import * as userService from "services/user";
 import SessionContext from "context/sessionContext";
 import { jwtDecode } from "jwt-decode";
+import PlantListPage from "pages/PlantListPage";
 
 const App = () => {
   const [sessionToken, setSessionToken] = useState(() =>
     userService.getSessionTokenStorage()
   );
 
-  jwtDecode(sessionToken);
+  // console.log("session token", sessionToken);
+  // console.log(jwtDecode(sessionToken))
 
   return (
     <SessionContext.Provider
       value={{
-        userName: sessionToken ? jwtDecode(sessionToken) : null,
+        username: sessionToken ? jwtDecode(sessionToken).userName : null,
         signIn: (token) => {
           setSessionToken(token);
           userService.setSessionTokenStorage(token);
@@ -31,6 +33,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<SignInPage />}></Route>
           <Route path="/sign-up" element={<SignUpPage />}></Route>
+          <Route path="/plants" element={<PlantListPage />}></Route>
         </Routes>
       </BrowserRouter>
     </SessionContext.Provider>
