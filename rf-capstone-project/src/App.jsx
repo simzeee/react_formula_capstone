@@ -12,13 +12,13 @@ const App = () => {
     userService.getSessionTokenStorage()
   );
 
-  // console.log("session token", sessionToken);
+  console.log("session token", sessionToken);
   // console.log(jwtDecode(sessionToken))
 
   return (
     <SessionContext.Provider
       value={{
-        username: sessionToken ? jwtDecode(sessionToken).userName : null,
+        username: sessionToken ? jwtDecode(sessionToken).username : null,
         signIn: (token) => {
           setSessionToken(token);
           userService.setSessionTokenStorage(token);

@@ -2,13 +2,13 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SessionContext from "context/sessionContext";
 
-const RedirectToPlantsIfSignedIn = (props) => {
+const RedirectToIfSignedInIfSignedOut = (props) => {
   const { username } = useContext(SessionContext);
   const navigate = useNavigate();
-  console.log('username', username)
+
   useEffect(() => {
-    if (username !== null) {
-      navigate("/plants");
+    if (username == null) {
+      navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [username]);
@@ -16,4 +16,4 @@ const RedirectToPlantsIfSignedIn = (props) => {
   return props.children;
 };
 
-export default RedirectToPlantsIfSignedIn;
+export default RedirectToIfSignedInIfSignedOut;
