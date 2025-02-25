@@ -10,6 +10,7 @@ const Field = (props) => {
         id={field.label}
         onChange={onChange}
         value={value}
+        type={field.type}
       ></input>
     </div>
   );
