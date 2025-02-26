@@ -28,13 +28,13 @@ const PlantListPage = () => {
           </div>
         ) : (
           <div className="flex justify-center py-24">
-            <div className="w-full max-w-5xl border border-red-50">
+            <div className="w-full max-w-5xl">
               {" "}
-              <div className="font-playfair text-4xl text-emerald-800 mb-6">
+              <div className="font-playfair text-4xl text-emerald-800 mb-6 px-4">
                 Plants In Stock
               </div>
               <div className="flex flex-wrap justify-center">
-                {plants.map((plant, idx) => (
+                {plants.map((plant) => (
                   <PlantItem key={plant.id} plant={plant} />
                 ))}
               </div>
