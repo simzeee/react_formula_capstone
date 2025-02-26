@@ -21,25 +21,27 @@ const PlantListPage = () => {
   return (
     <RedirectToIfSignedInIfSignedOut>
       <NavBar />
-      {loading ? (
-        <div className="flex justify-center pt-40">
-          <div className="text-3xl fa-duotone fa-spinner-third text-emerald-600 animate-spin"></div>
-        </div>
-      ) : (
-        <div className="flex justify-center py-24">
-          <div className="w-full max-w-5xl border border-red-50">
-            {" "}
-            <div className="font-playfair text-4xl text-emerald-800 mb-6">
-              Plants In Stock
-            </div>
-            <div className="flex flex-wrap">
-              {plants.map((plantService, idx) => (
-                <PlantItem key={idx}></PlantItem>
-              ))}
+      <div className="min-h-screen bg-green-50 ">
+        {loading ? (
+          <div className="flex justify-center pt-40">
+            <div className="text-3xl fa-duotone fa-spinner-third text-emerald-600 animate-spin"></div>
+          </div>
+        ) : (
+          <div className="flex justify-center py-24">
+            <div className="w-full max-w-5xl border border-red-50">
+              {" "}
+              <div className="font-playfair text-4xl text-emerald-800 mb-6">
+                Plants In Stock
+              </div>
+              <div className="flex flex-wrap justify-center">
+                {plants.map((plant, idx) => (
+                  <PlantItem key={plant.id} plant={plant} />
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </RedirectToIfSignedInIfSignedOut>
   );
 };
