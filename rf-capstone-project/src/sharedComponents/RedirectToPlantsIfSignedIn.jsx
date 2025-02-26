@@ -5,7 +5,7 @@ import SessionContext from "context/sessionContext";
 const RedirectToPlantsIfSignedIn = (props) => {
   const { username } = useContext(SessionContext);
   const navigate = useNavigate();
-  console.log('username', username)
+
   useEffect(() => {
     if (username !== null) {
       navigate("/plants");

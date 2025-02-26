@@ -12,9 +12,6 @@ const App = () => {
     userService.getSessionTokenStorage()
   );
 
-  console.log("session token", sessionToken);
-  // console.log(jwtDecode(sessionToken))
-
   return (
     <SessionContext.Provider
       value={{
