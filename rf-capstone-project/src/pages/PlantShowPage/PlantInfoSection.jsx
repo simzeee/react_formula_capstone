@@ -1,15 +1,19 @@
 import PlantHeading from "pages/PlantShowPage/PlantHeading";
 import BenefitBox from "./BenefitBox";
+import PlantPurchaseOptions from "./PlantPurchaseOptions";
+import { useState } from "react";
+import { getRandomElement } from "sharedComponents/util";
 
 const PlantInfoSection = (props) => {
   const { plant } = props;
+  const [imageIdx, setImageIdx] = useState(() => getRandomElement(plant.images));
   return (
     <div className="flex flex-col md:flex-row">
       <div className="flex flex-col flex-1">
         <div className="block md:hidden mb-8">
           <PlantHeading plant={plant} />
         </div>
-        <img className="rounded-lg" src={plant.images[0].src} />
+        <img className="rounded-lg" src={plant.images[imageIdx].src} />
         <div className="flex mt-4">
           <BenefitBox
             icon="far fa-check-circle"
@@ -31,6 +35,11 @@ const PlantInfoSection = (props) => {
         <p className="text-slate-600 leading-relaxed mt-4">
           {plant.description}
         </p>
+        <PlantPurchaseOptions
+          plant={plant}
+          imageIdx={imageIdx}
+          setImageIdx={setImageIdx}
+        />
       </div>
     </div>
   );
