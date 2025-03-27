@@ -67,7 +67,6 @@ const PlantPurchaseOptions = (props) => {
               potColor: plant.images[imageIdx].pot_color,
             });
             setIsLoading(false);
-            console.log(response.status);
           }}
           className="ml-2 flex-1 rounded-full bg-emerald-700 text-white text-xl flex justify-center items-center hover:bg-emerald-800"
         >
