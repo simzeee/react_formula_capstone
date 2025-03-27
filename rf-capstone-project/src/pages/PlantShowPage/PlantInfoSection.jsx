@@ -6,7 +6,9 @@ import { getRandomElement } from "sharedComponents/util";
 
 const PlantInfoSection = (props) => {
   const { plant } = props;
-  const [imageIdx, setImageIdx] = useState(() => getRandomElement(plant.images));
+  const [imageIdx, setImageIdx] = useState(() =>
+    getRandomElement(plant.images)
+  );
   return (
     <div className="flex flex-col md:flex-row">
       <div className="flex flex-col flex-1">
@@ -32,7 +34,7 @@ const PlantInfoSection = (props) => {
         <div className="hidden md:block">
           <PlantHeading plant={plant} />
         </div>
-        <p className="text-slate-600 leading-relaxed mt-4">
+        <p className="text-slate-600 leading-relaxed mt-6">
           {plant.description}
         </p>
         <PlantPurchaseOptions
