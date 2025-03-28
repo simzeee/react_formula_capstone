@@ -5,6 +5,7 @@ import * as carService from "services/cart";
 import LoadingSpinner from "pages/LoadingSpinner";
 import CartItem from "./CartItem";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 
 const CartModal = (props) => {
   const { setCartOpen } = props;
@@ -31,7 +32,12 @@ const CartModal = (props) => {
     subTotal += item.quantity * item.price_per_unit;
   }
   return (
-    <div className="bg-white h-screen w-full max-w-xl flex flex-col">
+    <motion.div
+      className="bg-white h-screen w-full max-w-xl flex flex-col"
+      initial={{ translateX: "100%" }}
+      animate={{ translateX: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="shadow-md bg-emerald-800 text-white font-playfair text-center py-7 text-3xl">
         {username}&apos;s Cart
       </div>
@@ -73,7 +79,7 @@ const CartModal = (props) => {
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
 

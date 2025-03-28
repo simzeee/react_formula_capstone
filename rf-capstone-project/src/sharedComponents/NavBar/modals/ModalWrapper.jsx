@@ -18,7 +18,7 @@ const ModalWrapper = (props) => {
           }
         }}
         ref={backgroundDivRef}
-        className="fixed items-start top-0 left-0 w-full h-full bg-black/30 backdrop-blur-sm flex justify-end font-lato"
+        className="fixed items-start top-0 left-0 w-full h-full bg-black/30 backdrop-blur-sm flex justify-end font-lato z-20"
       >
         <button className="absolute top-0 right-0 p-2" onClick={onCloseClick}>
           <i className="fa-regular fa-circle-xmark text-4xl text-emerald-400"></i>
